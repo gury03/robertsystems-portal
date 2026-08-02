@@ -69,7 +69,7 @@ const en = {
           "Online payments (confirm/cancel)",
           "Plans and zones",
           "MikroTik integration",
-          "Fiber networks (OLT)",
+          "OLT integration (fiber optics)",
           "Service status lookup",
           "Outage reporting from the portal",
           "Users and reports",

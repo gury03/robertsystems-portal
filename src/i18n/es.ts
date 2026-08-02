@@ -70,7 +70,7 @@ const es = {
           "Pagos online (confirmar/anular)",
           "Planes y zonas",
           "Integración con MikroTik",
-          "Redes de fibra (OLT)",
+          "Integración con OLT (fibra óptica)",
           "Consulta de estado del servicio",
           "Reporte de averías desde el portal",
           "Usuarios y reportes",
