@@ -19,6 +19,13 @@
 		"ZOHO_SMTP_USER": "contacto@robertsystems.org",
 		"CONTACT_TO": "contacto@robertsystems.org"
 	},
+	"d1_databases": [
+		{
+			"binding": "robertsystems_cms",
+			"database_name": "robertsystems_cms",
+			"database_id": "1bbced50-9e6e-4218-9d55-4a166b2b0c9a"
+		}
+	],
 	"routes": [
 		{
 			"pattern": "robertsystems.org",

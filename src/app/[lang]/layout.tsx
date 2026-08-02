@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { locales, isLocale, type Locale } from "@/i18n/config";
+import { isLocale, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
+import { getMergedContent } from "@/lib/cms";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-export function generateStaticParams() {
-  return locales.map((lang) => ({ lang }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
@@ -46,7 +45,7 @@ export default async function LangLayout({
   const { lang } = await params;
   if (!isLocale(lang)) notFound();
 
-  const dict = await getDictionary(lang as Locale);
+  const dict = await getMergedContent(lang as Locale);
 
   return (
     <div className="flex min-h-screen flex-col bg-background text-text">

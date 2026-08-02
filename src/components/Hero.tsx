@@ -27,13 +27,18 @@ export default function Hero({ dict }: { dict: Dictionary }) {
           </span>
 
           <h1 className="mt-6 text-4xl font-extrabold leading-tight tracking-tight text-heading sm:text-5xl lg:text-6xl">
-            {dict.hero.title.map((segment, i) =>
-              segment.highlight ? (
-                <span key={i} className="gradient-text">
-                  {segment.text}
-                </span>
-              ) : (
-                <span key={i}>{segment.text}</span>
+            {typeof dict.hero.title === "string" ? (
+              dict.hero.title
+            ) : (
+              (dict.hero.title as { text: string; highlight?: boolean }[]).map(
+                (segment, i) =>
+                  segment.highlight ? (
+                    <span key={i} className="gradient-text">
+                      {segment.text}
+                    </span>
+                  ) : (
+                    <span key={i}>{segment.text}</span>
+                  )
               )
             )}
           </h1>

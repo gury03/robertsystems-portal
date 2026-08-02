@@ -47,6 +47,12 @@ src/
 │   ├── [lang]/          # Rutas bilingües (es/en)
 │   │   ├── layout.tsx
 │   │   └── page.tsx     # Página principal
+│   ├── admin/           # Panel de administración (/admin)
+│   │   ├── login/       # Inicio de sesión
+│   │   └── [section]/   # Editor de cada sección
+│   ├── api/
+│   │   ├── admin/       # API del panel (login, logout, content)
+│   │   └── contact/     # API del formulario de contacto
 │   ├── layout.tsx
 │   ├── page.tsx         # Redirige a /es
 │   ├── globals.css      # Tema y utilidades
@@ -54,7 +60,23 @@ src/
 │   ├── robots.ts
 │   └── sitemap.ts
 ├── components/          # Navbar, Hero, Services, Projects, About, Contact, Footer, icons
-└── i18n/                # Diccionarios es.ts / en.ts + config
+│   └── admin/           # Componentes del panel (editores de secciones)
+├── i18n/                # Diccionarios es.ts / en.ts + config
+└── lib/                 # cms.ts (contenido D1) y admin-auth.ts
+```
+
+## 🛠️ Panel de administración (`/admin`)
+
+El portal incluye un panel propio para editar el contenido sin programar:
+
+- Ruta: `https://robertsystems.org/admin`
+- Protegido por contraseña (`ADMIN_PASSWORD`)
+- Permite editar: menú, portada, servicios, proyectos, nosotros, contacto y pie de página
+- Los cambios se guardan en **Cloudflare D1** y se publican **al instante**
+
+Para configurar la contraseña en producción:
+```bash
+npx wrangler secret put ADMIN_PASSWORD
 ```
 
 ## ☁️ Despliegue en Cloudflare

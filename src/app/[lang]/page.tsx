@@ -1,11 +1,13 @@
 import { notFound } from "next/navigation";
 import { isLocale, type Locale } from "@/i18n/config";
-import { getDictionary } from "@/i18n/dictionaries";
+import { getMergedContent } from "@/lib/cms";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import Projects from "@/components/Projects";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
+
+export const dynamic = "force-dynamic";
 
 export default async function HomePage({
   params,
@@ -15,8 +17,7 @@ export default async function HomePage({
   const { lang } = await params;
   if (!isLocale(lang)) notFound();
 
-  const dict = await getDictionary(lang as Locale);
-
+  const dict = await getMergedContent(lang as Locale);
   return (
     <>
       <Hero dict={dict} />
