@@ -2,5 +2,9 @@
 # Copia este archivo como `.dev.vars` y completa tus valores.
 # NO subas `.dev.vars` a Git (ya está en .gitignore).
 #
-# Ejemplo:
-# MY_SECRET=valor
+# Formulario de contacto — SMTP de Zoho Mail
+# ZOHO_SMTP_HOST=smtp.zoho.com
+# ZOHO_SMTP_PORT=465
+# ZOHO_SMTP_USER=contacto@robertsystems.org
+# ZOHO_SMTP_PASS=tu-contraseña-de-aplicacion
+# CONTACT_TO=contacto@robertsystems.org

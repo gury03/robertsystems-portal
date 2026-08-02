@@ -112,7 +112,17 @@ Este proyecto incluye el workflow `.github/workflows/deploy.yml`. Para usarlo:
 
 ## 📬 Formulario de contacto
 
-Actualmente el formulario muestra un mensaje de éxito de forma local (sin backend). Para recibir los mensajes en tu correo, conecta un servicio como [Resend](https://resend.com), [Formspree](https://formspree.io) o [EmailJS](https://www.emailjs.com) editando `src/components/Contact.tsx` (busca el comentario `TODO`).
+El formulario envía los mensajes a `contacto@robertsystems.org` usando el **SMTP de Zoho Mail** (`smtp.zoho.com`, puerto 465/SSL) mediante `nodemailer` en la API route `src/app/api/contact/route.ts`.
+
+Variables de entorno necesarias:
+
+- `ZOHO_SMTP_HOST=smtp.zoho.com`
+- `ZOHO_SMTP_PORT=465`
+- `ZOHO_SMTP_USER=contacto@robertsystems.org`
+- `ZOHO_SMTP_PASS` — contraseña de aplicación generada en Zoho (verificación en 2 pasos)
+- `CONTACT_TO=contacto@robertsystems.org`
+
+En producción, `ZOHO_SMTP_PASS` se guarda como **secret del Worker** (`npx wrangler secret put ZOHO_SMTP_PASS`); las demás van en `wrangler.jsonc` → `vars`. En desarrollo local, copia `.dev.vars.example` a `.dev.vars`.
 
 ## 🧹 Limpieza de instrucciones
 

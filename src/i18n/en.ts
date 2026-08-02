@@ -120,6 +120,7 @@ const en = {
       submit: "Send message",
       success:
         "Thanks! Your message has been sent. We'll get back to you as soon as possible.",
+      error: "Could not send your message. Please try again.",
     },
     info: {
       email: "contact@robertsystems.org",

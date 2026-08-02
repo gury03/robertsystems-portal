@@ -6,11 +6,33 @@ import { MailIcon, MapPinIcon } from "./icons";
 
 export default function Contact({ dict }: { dict: Dictionary }) {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    // TODO: conectar a un servicio de formularios (Resend, Formspree, EmailJS, etc.)
-    setSubmitted(true);
+    setLoading(true);
+    setError(null);
+
+    const form = event.currentTarget;
+    const data = Object.fromEntries(new FormData(form));
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      const json = await res.json().catch(() => ({}));
+      if (!res.ok || !json.ok) {
+        throw new Error(json.error ?? "Error");
+      }
+      setSubmitted(true);
+    } catch {
+      setError(dict.contact.form.error);
+    } finally {
+      setLoading(false);
+    }
   }
 
   const inputClasses =
@@ -86,6 +108,17 @@ export default function Contact({ dict }: { dict: Dictionary }) {
                 onSubmit={handleSubmit}
                 className="gradient-ring space-y-5 rounded-2xl bg-card p-7"
               >
+                {/* Honeypot anti-spam (oculto a usuarios) */}
+                <div className="hidden" aria-hidden="true">
+                  <label htmlFor="website">Website</label>
+                  <input
+                    id="website"
+                    name="website"
+                    type="text"
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
                 <div className="grid gap-5 sm:grid-cols-2">
                   <div className="space-y-2">
                     <label
@@ -136,11 +169,17 @@ export default function Contact({ dict }: { dict: Dictionary }) {
                     className={`${inputClasses} resize-none`}
                   />
                 </div>
+                {error && (
+                  <p className="rounded-xl border border-red-400/30 bg-red-400/10 px-4 py-3 text-sm text-red-300">
+                    {error}
+                  </p>
+                )}
                 <button
                   type="submit"
-                  className="w-full rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-background transition-all hover:bg-cyan-300 hover:shadow-lg hover:shadow-primary/25 sm:w-auto"
+                  disabled={loading}
+                  className="w-full rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-background transition-all hover:bg-cyan-300 hover:shadow-lg hover:shadow-primary/25 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
                 >
-                  {dict.contact.form.submit}
+                  {loading ? "..." : dict.contact.form.submit}
                 </button>
               </form>
             )}

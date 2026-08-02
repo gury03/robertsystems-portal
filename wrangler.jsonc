@@ -13,6 +13,12 @@
 		"directory": ".open-next/assets",
 		"binding": "ASSETS"
 	},
+	"vars": {
+		"ZOHO_SMTP_HOST": "smtp.zoho.com",
+		"ZOHO_SMTP_PORT": "465",
+		"ZOHO_SMTP_USER": "contacto@robertsystems.org",
+		"CONTACT_TO": "contacto@robertsystems.org"
+	},
 	"routes": [
 		{
 			"pattern": "robertsystems.org",

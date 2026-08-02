@@ -126,6 +126,7 @@ const es = {
       submit: "Enviar mensaje",
       success:
         "¡Gracias! Tu mensaje ha sido enviado. Te responderemos lo antes posible.",
+      error: "No se pudo enviar el mensaje. Inténtalo de nuevo.",
     },
     info: {
       email: "contacto@robertsystems.org",
