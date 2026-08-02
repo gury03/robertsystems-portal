@@ -26,6 +26,12 @@
 			"database_id": "1bbced50-9e6e-4218-9d55-4a166b2b0c9a"
 		}
 	],
+	"r2_buckets": [
+		{
+			"binding": "MEDIA_BUCKET",
+			"bucket_name": "robertsystems-media"
+		}
+	],
 	"routes": [
 		{
 			"pattern": "robertsystems.org",

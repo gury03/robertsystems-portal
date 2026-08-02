@@ -8,8 +8,17 @@ import {
   Card,
   StringListEditor,
 } from "./ui";
+import ImageUploader from "./ImageUploader";
 
 type Data = Record<string, unknown>;
+
+function slug(s: string): string {
+  const r = s
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+  return r || "item";
+}
 
 function asStr(v: unknown): string {
   return typeof v === "string" ? v : "";
@@ -300,6 +309,26 @@ function ProjectsForm({
               <Field label="Descripción">
                 <TextArea value={asStr(item.description)} onChange={(v) => setItem(i, "description", v)} />
               </Field>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <Field label="Logo del sistema">
+                  <ImageUploader
+                    folder={`projects/${slug(asStr(item.name))}`}
+                    value={asStr(item.logo) || undefined}
+                    onChange={(v) => setItem(i, "logo", v ?? null)}
+                    label="Subir logo"
+                  />
+                </Field>
+                <Field label="Capturas de pantalla" hint="Puedes subir varias para mostrarlas en el portal.">
+                  <ImageUploader
+                    folder={`projects/${slug(asStr(item.name))}`}
+                    value={asArr(item.screenshots) as string[]}
+                    onChange={(v) => setItem(i, "screenshots", v ?? [])}
+                    multiple
+                    label="Subir capturas"
+                    addLabel="Agregar captura"
+                  />
+                </Field>
+              </div>
               <StringListEditor
                 label="Características"
                 values={asArr(item.features) as string[]}

@@ -27,9 +27,18 @@ export default function Projects({ dict }: { dict: Dictionary }) {
               >
                 <div className="flex items-center justify-between border-b border-border/70 px-7 py-5">
                   <div className="flex items-center gap-3">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-accent text-sm font-bold text-background">
-                      {initials}
-                    </div>
+                    {"logo" in project && project.logo ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={project.logo as string}
+                        alt={project.name}
+                        className="h-11 w-11 rounded-xl bg-surface object-contain p-1"
+                      />
+                    ) : (
+                      <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-accent text-sm font-bold text-background">
+                        {initials}
+                      </div>
+                    )}
                     <div>
                       <h3 className="text-lg font-semibold text-heading">
                         {project.name}
@@ -62,6 +71,35 @@ export default function Projects({ dict }: { dict: Dictionary }) {
                       </li>
                     ))}
                   </ul>
+
+                  {"screenshots" in project &&
+                    Array.isArray(project.screenshots) &&
+                    (project.screenshots as string[]).length > 0 && (
+                      <div className="mt-6">
+                        <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted">
+                          Capturas
+                        </p>
+                        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+                          {(project.screenshots as string[]).map((src) => (
+                            <a
+                              key={src}
+                              href={src}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="group overflow-hidden rounded-lg border border-border/60 transition-colors hover:border-primary/50"
+                            >
+                              {/* eslint-disable-next-line @next/next/no-img-element */}
+                              <img
+                                src={src}
+                                alt={`${project.name} captura`}
+                                loading="lazy"
+                                className="aspect-video w-full object-cover transition-transform group-hover:scale-105"
+                              />
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    )}
 
                   {"tech" in project && project.tech && (
                     <div className="mt-6 flex flex-wrap gap-2">
