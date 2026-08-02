@@ -61,18 +61,19 @@ const en = {
         status: "Active",
         type: "Web management system for ISPs",
         description:
-          "Web platform for internet service providers (ISPs): manage subscribers, billing, online payments, plans, zones and the state of your network, all from one place.",
+          "Web platform for internet service providers (ISPs) with a payment portal for subscribers: manage customers, billing and online payments, check service status and report outages, with MikroTik and OLT integration.",
         features: [
           "Subscriber management",
           "Billing and payment control",
+          "Payment portal for subscribers",
           "Online payments (confirm/cancel)",
           "Plans and zones",
           "MikroTik integration",
           "Fiber networks (OLT)",
-          "Customer portal",
-          "Users, reports and tickets",
+          "Service status lookup",
+          "Outage reporting from the portal",
+          "Users and reports",
         ],
-        tech: ["Cloudflare Workers", "React", "D1 (SQLite)", "MikroTik API"],
       },
       {
         name: "POS System",

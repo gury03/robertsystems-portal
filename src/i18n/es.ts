@@ -62,18 +62,19 @@ const es = {
         status: "Activo",
         type: "Sistema de gestión web para ISPs",
         description:
-          "Plataforma web para proveedores de servicios de internet (ISPs): administra abonados, facturación, pagos online, planes, zonas y el estado de tu red, todo desde un solo lugar.",
+          "Plataforma web para proveedores de servicios de internet (ISPs) con portal de pagos para abonados: administra clientes, facturación y pagos online, consulta el estado del servicio y reporta averías, con integración a MikroTik y OLT.",
         features: [
           "Gestión de abonados",
           "Facturación y control de pagos",
+          "Portal de pagos para abonados",
           "Pagos online (confirmar/anular)",
           "Planes y zonas",
           "Integración con MikroTik",
           "Redes de fibra (OLT)",
-          "Portal del cliente",
-          "Usuarios, reportes y tickets",
+          "Consulta de estado del servicio",
+          "Reporte de averías desde el portal",
+          "Usuarios y reportes",
         ],
-        tech: ["Cloudflare Workers", "React", "D1 (SQLite)", "MikroTik API"],
       },
       {
         name: "Sistema POS",
