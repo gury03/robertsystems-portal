@@ -1,5 +1,5 @@
 import type { Dictionary } from "@/i18n/dictionaries";
-import { CheckIcon } from "./icons";
+import { CheckIcon, DownloadIcon } from "./icons";
 
 export default function Projects({ dict }: { dict: Dictionary }) {
   return (
@@ -62,6 +62,31 @@ export default function Projects({ dict }: { dict: Dictionary }) {
                       </li>
                     ))}
                   </ul>
+
+                  {"tech" in project && project.tech && (
+                    <div className="mt-6 flex flex-wrap gap-2">
+                      {project.tech.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-full border border-border bg-surface px-3 py-1 text-xs font-medium text-text"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
+                  {"download" in project && project.download && (
+                    <a
+                      href={project.download.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-background transition-all hover:bg-cyan-300 hover:shadow-lg hover:shadow-primary/25"
+                    >
+                      <DownloadIcon className="h-4 w-4" />
+                      {project.download.label}
+                    </a>
+                  )}
                 </div>
               </article>
             );

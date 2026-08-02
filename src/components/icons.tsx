@@ -126,6 +126,14 @@ export function RocketIcon(props: IconProps) {
   );
 }
 
+export function DownloadIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props} aria-hidden="true">
+      <path d="M12 3v12M7 10l5 5 5-5M4 21h16" />
+    </svg>
+  );
+}
+
 export function LogoMark({ className = "" }: { className?: string }) {
   return (
     <svg
