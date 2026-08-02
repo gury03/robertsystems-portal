@@ -1,0 +1,73 @@
+import type { Dictionary } from "@/i18n/dictionaries";
+import { CheckIcon } from "./icons";
+
+export default function Projects({ dict }: { dict: Dictionary }) {
+  return (
+    <section id="proyectos">
+      <div className="mx-auto max-w-6xl px-5 py-20 sm:py-24">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="text-3xl font-bold tracking-tight text-heading sm:text-4xl">
+            {dict.projects.title}
+          </h2>
+          <p className="mt-4 text-lg text-muted">{dict.projects.subtitle}</p>
+        </div>
+
+        <div className="mt-14 grid gap-8 lg:grid-cols-2">
+          {dict.projects.items.map((project) => {
+            const initials = project.name
+              .split(" ")
+              .map((w) => w[0])
+              .join("")
+              .toUpperCase();
+
+            return (
+              <article
+                key={project.name}
+                className="gradient-ring overflow-hidden rounded-2xl bg-card transition-all hover:-translate-y-1"
+              >
+                <div className="flex items-center justify-between border-b border-border/70 px-7 py-5">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-accent text-sm font-bold text-background">
+                      {initials}
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-heading">
+                        {project.name}
+                      </h3>
+                      <p className="text-xs uppercase tracking-wider text-muted">
+                        {project.type}
+                      </p>
+                    </div>
+                  </div>
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-xs font-semibold text-emerald-400">
+                    <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
+                    {project.status}
+                  </span>
+                </div>
+
+                <div className="p-7">
+                  <p className="text-sm leading-relaxed text-muted">
+                    {project.description}
+                  </p>
+                  <ul className="mt-6 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+                    {project.features.map((feature) => (
+                      <li
+                        key={feature}
+                        className="flex items-center gap-2.5 text-sm text-text"
+                      >
+                        <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary">
+                          <CheckIcon className="h-3 w-3" />
+                        </span>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
