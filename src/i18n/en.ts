@@ -115,6 +115,8 @@ const en = {
       namePlaceholder: "Your name",
       email: "Email",
       emailPlaceholder: "you@example.com",
+      phone: "WhatsApp",
+      phonePlaceholder: "Your WhatsApp number (optional)",
       message: "Message",
       messagePlaceholder: "Tell us about your project...",
       submit: "Send message",

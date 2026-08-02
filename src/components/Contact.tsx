@@ -152,6 +152,22 @@ export default function Contact({ dict }: { dict: Dictionary }) {
                       className={inputClasses}
                     />
                   </div>
+                  <div className="space-y-2">
+                    <label
+                      htmlFor="phone"
+                      className="block text-sm font-medium text-text"
+                    >
+                      {dict.contact.form.phone}
+                    </label>
+                    <input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      inputMode="tel"
+                      placeholder={dict.contact.form.phonePlaceholder}
+                      className={inputClasses}
+                    />
+                  </div>
                 </div>
                 <div className="space-y-2">
                   <label

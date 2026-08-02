@@ -121,6 +121,8 @@ const es = {
       namePlaceholder: "Tu nombre",
       email: "Correo electrónico",
       emailPlaceholder: "tucorreo@ejemplo.com",
+      phone: "WhatsApp",
+      phonePlaceholder: "Tu número de WhatsApp (opcional)",
       message: "Mensaje",
       messagePlaceholder: "Cuéntanos sobre tu proyecto...",
       submit: "Enviar mensaje",

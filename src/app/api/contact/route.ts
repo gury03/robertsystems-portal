@@ -6,6 +6,7 @@ export const runtime = "nodejs";
 interface ContactBody {
   name?: string;
   email?: string;
+  phone?: string;
   message?: string;
   website?: string; // honeypot anti-spam
 }
@@ -25,6 +26,7 @@ export async function POST(request: Request) {
 
   const name = body.name?.trim() ?? "";
   const email = body.email?.trim() ?? "";
+  const phone = body.phone?.trim() ?? "";
   const message = body.message?.trim() ?? "";
 
   if (!name || !email || !message) {
@@ -66,12 +68,13 @@ export async function POST(request: Request) {
       to,
       replyTo: email,
       subject: `Nuevo mensaje desde el portal: ${name}`,
-      text: `Nombre: ${name}\nEmail: ${email}\n\nMensaje:\n${message}`,
+      text: `Nombre: ${name}\nEmail: ${email}\nWhatsApp: ${phone || "—"}\n\nMensaje:\n${message}`,
       html: `
         <div style="font-family:Arial,sans-serif;max-width:600px;margin:auto;padding:24px;border:1px solid #e2e8f0;border-radius:12px">
           <h2 style="margin-top:0;color:#0f172a">Nuevo mensaje desde robertsystems.org</h2>
           <p style="margin:4px 0;color:#334155"><strong>Nombre:</strong> ${name}</p>
           <p style="margin:4px 0;color:#334155"><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
+          <p style="margin:4px 0;color:#334155"><strong>WhatsApp:</strong> ${phone || "—"}</p>
           <hr style="border:none;border-top:1px solid #e2e8f0;margin:16px 0"/>
           <p style="color:#334155;white-space:pre-wrap">${message}</p>
         </div>
