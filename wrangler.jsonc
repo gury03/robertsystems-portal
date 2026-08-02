@@ -3,6 +3,7 @@
 	"main": ".open-next/worker.js",
 	"name": "robertsystems-portal",
 	"account_id": "19bda0e4ac095e0c1d45d4cdc992f01e",
+	"workers_dev": true,
 	"compatibility_date": "2026-08-01",
 	"compatibility_flags": [
 		"nodejs_compat",
@@ -12,6 +13,16 @@
 		"directory": ".open-next/assets",
 		"binding": "ASSETS"
 	},
+	"routes": [
+		{
+			"pattern": "robertsystems.org",
+			"custom_domain": true
+		},
+		{
+			"pattern": "www.robertsystems.org",
+			"custom_domain": true
+		}
+	],
 	"services": [
 		{
 			// Self-reference service binding, the service name must match the worker name
