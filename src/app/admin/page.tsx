@@ -41,8 +41,9 @@ export default async function AdminDashboard() {
 
       <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-4 text-sm text-slate-400">
         <span className="font-medium text-slate-300">¿Dónde están los idiomas?</span>{" "}
-        Las secciones se editan para el idioma <strong>español</strong>. El
-        contenido en inglés se mantiene con los valores por defecto del portal.
+        Dentro de cada sección verás un selector <strong>Español / English</strong>{" "}
+        para editar el contenido en cada idioma. Si no has editado un idioma, se
+        muestran los textos por defecto del portal.
       </div>
     </div>
   );
