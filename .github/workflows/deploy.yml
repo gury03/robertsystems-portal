@@ -25,9 +25,7 @@ jobs:
         run: npm ci
 
       - name: Build with OpenNext
-        # Next 15.5 ya salio del ciclo de soporte (2 anios); OpenNext exige este flag
-        # para compilar mientras se planifica la migracion a Next 16.
-        run: npx opennextjs-cloudflare build --dangerouslyUseUnsupportedNextVersion
+        run: npx opennextjs-cloudflare build
 
       - name: Deploy to Cloudflare
         uses: cloudflare/wrangler-action@v3
