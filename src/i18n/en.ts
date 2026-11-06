@@ -95,7 +95,7 @@ const en = {
         ],
         tech: ["JavaFX", "MySQL", "Windows 7 or higher"],
         download: {
-          url: "https://github.com/gury03/robertsystems-portal/releases/download/puntodeventa-v2.0.11/PuntoDeVenta_2.0.11_Setup.exe",
+          url: "https://github.com/gury03/robertsystems-portal/releases/download/puntodeventa-v2.0.12/PuntoDeVenta_2.0.12_Setup.exe",
           label: "Download installer (136 MB)",
         },
       },
